@@ -227,7 +227,6 @@
               "indent": [2, 2, {"SwitchCase": 1}],
               "key-spacing": [2, {
                 "afterColon": true,
-                "align": "value",
                 "beforeColon": false,
                 }], // 'prop': x, extra spacing allowed if lining up blocks
                 "linebreak-style": [
