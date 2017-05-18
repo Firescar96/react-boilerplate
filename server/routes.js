@@ -1,3 +1,5 @@
+var path = require('path');
+
 exports = module.exports = function (app) {
   app.use(function (req, res, next) {
     res.header('Access-Control-Allow-Origin', '*');
@@ -7,6 +9,6 @@ exports = module.exports = function (app) {
 
   //HomePage
   app.get('/*', function (req, res, next) {
-    res.render('index.html');
+    res.sendFile(path.join(__dirname + '/../public/index.html'));
   });
 };

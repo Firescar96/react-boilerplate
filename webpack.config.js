@@ -1,40 +1,38 @@
-var ExtractTextPlugin = require("extract-text-webpack-plugin");
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const path = require('path');
 
 module.exports = {
   entry: {
-    main:  './client/js/main.js',
+    main: './client/js/main.js',
   },
   output: {
-    path:     './public/',
-    filename: 'js/[name].js' //Template based on keys in entry above
+    path: path.join(__dirname, '/public/'),
+    filename: 'js/[name].js', // Template based on keys in entry above
   },
   module: {
     loaders: [
       {
-        test:    /\.js$/,
+        test: /\.js$/,
         exclude: /(node_modules)/,
-        loader:  'babel',
-        query:   {
+        loader: 'babel-loader',
+        query: {
           presets: ['es2015', 'react'],
         },
       },
       {
-        test:    /\.json$/,
-        loader:  'json',
+        test: /\.json$/,
+        loader: 'json',
       },
       {
         test: /\.scss$/,
-        loader: ExtractTextPlugin.extract(
-          'style', // The backup style loader
-          'css?sourceMap!sass?sourceMap'
-        )
+        loader: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: ['css-loader', 'sass-loader'],
+        }),
       },
     ],
   },
-  sassLoader: {
-    includePaths: [ './client/sass' ]
-  },
   plugins: [
-    new ExtractTextPlugin("style/[name].css")
+    new ExtractTextPlugin('style/[name].css'),
   ],
 };
