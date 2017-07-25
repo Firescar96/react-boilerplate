@@ -1,12 +1,10 @@
 import Home from './Home.js';
 import React from 'react';
 import { render } from 'react-dom';
-import { Router, Route, browserHistory } from 'react-router';
+import { BrowserRouter, Route } from 'react-router-dom';
 
-$(function () {
-  render((
-    <Router history={browserHistory}>
-      <Route path="*" component={Home}/>
-    </Router>
-  ), document.getElementById('root'));
-});
+render((
+  <BrowserRouter>
+    <Route path="*" component={Home}/>
+  </BrowserRouter>
+), document.getElementById('root'));

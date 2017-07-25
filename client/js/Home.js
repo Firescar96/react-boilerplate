@@ -1,17 +1,12 @@
 import React from 'react';
+import Navbar from './Navbar.js';
 require('../sass/home.scss');
 
-let navbar = (
-  <nav>
-    <h1>React Boilerplate</h1>
-  </nav>
-);
-
-var Home = React.createClass({
+class Home extends React.Component {
   render () {
     return (
       <div>
-        {navbar}
+        <Navbar />
 
         <main>
           this is not a website
@@ -19,7 +14,7 @@ var Home = React.createClass({
 
       </div>
     );
-  },
-});
+  }
+}
 
 export default Home;
